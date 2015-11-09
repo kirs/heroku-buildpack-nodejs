@@ -128,7 +128,9 @@ build_dependencies() {
 
 header "Building dependencies"
 build_dependencies | output "$LOG_FILE"
+header "Compiling webpack assets"
 node_modules/.bin/gulp build:production
+header "Symlinking Node for Rails"
 ln -s ../front/.heroku/node/bin/node ${1:-}/bin/node
 
 cache_build() {
